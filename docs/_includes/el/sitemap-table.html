@@ -1,0 +1,55 @@
+{%- comment -%}
+USAGE:
+
+{% include el/sitemap-table.html %}
+
+→ Listet alle Seiten im aktuellen Verzeichnis und Unterverzeichnissen, sortiert nach Titel, Tabelle mit Klasse "sitemap"
+
+{% include el/sitemap-table.html dir="/docs/" %}
+
+→ Listet alle Seiten unter /docs/, sortiert nach Titel
+
+{% include el/sitemap-table.html dir="/blog/" sort_by="date" class="my-table" %}
+
+→ Listet alle Seiten unter /blog/, sortiert nach Datum, Tabelle mit Klasse "my-table"
+
+PARAMETER:
+
+dir       → Basisverzeichnis (optional, default = aktuelles Seitenverzeichnis)
+sort_by   → Sortierfeld (optional, default = "title"; möglich: "title", "date", etc.)
+class     → CSS-Klasse für <table> (optional, default = "table sitemap")
+
+{%- endcomment -%}
+
+{% assign target_dir = include.dir | default: page.dir %}
+{% assign sort_field = include.sort_by | default: "p.url" %}
+{% assign table_class = include.class | default: "table sitemap" %}
+
+{% assign filtered_pages = filtered_pages | where_exp: "p", "p.path endswith '.html'" %}
+{% assign filtered_posts = site.posts | where_exp: "p", "p.url contains target_dir" %}
+{% assign all_pages = filtered_pages | concat: filtered_posts %}
+{% assign sorted_pages = all_pages | sort: sort_field %}
+
+<table class="{{ table_class }}">
+    <thead>
+    <tr>
+        <th>Titel</th>
+        <th>Datum</th>
+        <th>Größe</th>
+        <th>Link</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in sorted_pages %}
+    <tr>
+        <td>{{ p.title }}</td>
+        <td>{{ p.date | date: "%Y-%m-%d" }}</td>
+        <td>
+            {% capture path %}{{ p.path | prepend: site.source }}/{{ p.name }}{% endcapture %}
+            {% assign filesize = path | size %}{{ filesize }} B
+        </td>
+        <td><a href="{{ p.url }}">{{ p.url }}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

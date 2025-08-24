@@ -1,0 +1,10 @@
+.idea
+composer.lock
+/vendor/
+libs/
+/.sass-cache
+/node_modules
+/dist
+/docs/assets/dist
+
+/workspaces

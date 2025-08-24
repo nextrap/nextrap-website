@@ -1,0 +1,53 @@
+# Changes to this file will NOT be reloaded in jekyll --watch mode! Restart
+# jekyll after updating this file!
+
+google_analytics:
+show_downloads: true
+
+# Make directory-style links
+#permalink: pretty
+#exclude: ['assets']
+
+sass:
+  sass_dir: _sass_disabled
+
+livereload: true
+exclude:
+    - "*.bak"
+    - ".*"
+    - "*~"
+    - "~*"
+
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+  - scope:
+      path: "examples"        # gilt global
+    values:
+      render_with_liquid: false
+      layout: null
+collections:
+    elements:
+        output: false
+    snippets:
+        output: false
+
+
+# TODO: I'm not sure if this is doing anything infrastructure-wise
+# sometimes commenting this out prevents jekyll from building, but sometimes not
+# however, uncommenting this line prevent jekyll from finding _posts
+
+# collections_dir: .
+
+
+plugins:
+- jekyll-optional-front-matter
+- jekyll-sitemap
+

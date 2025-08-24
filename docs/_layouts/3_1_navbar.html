@@ -1,0 +1,67 @@
+---
+layout: 2_script
+---
+<!-- Genne Layout: -->
+<!--nav layout="use: #navbar-centerlogo; zoom-ratio-mobile: 2; translatey-mobile: 35px; zoom-ratio: 2.5; translatey: 80px;">
+    <div class="brand">
+        <a href="/">
+            <img src="assets/logo.svg" class="">
+
+        </a>
+    </div>
+    <ul class="navbar-main">
+        {% include el/navbar.html ptag="nav" %}
+    </ul>
+</nav-->
+<nte-navbar class="fixed autoborder autoshadow" scroll-threshold="500" style="--spacer-height: 125px;">
+    <nte-navbar-line style="--brand-height: 64px">
+
+
+
+       <a slot="brand" href="/">
+            <img
+                src="/assets/logo.png"
+                alt="{{ site.data.general.logoalt }}"
+                height="34"
+                class="p-3 loader-image"
+                style="float: left"
+            />
+            <div style="font-size: 1.1em; float: right" class="m-2 text-black">
+              <div style="font-size: 1.6em">{{ site.data.general.logoalt }}</div>
+              <div style="font-size: 1.1em">{{ site.data.general.fachrichtung}}</div>
+            </div>
+        </a>
+
+        <nte-nav
+            class="nav-horizontal"
+            mode="master"
+            data-group-name="nav1"
+            breakpoint="600px"
+            transfer-to="#navSidebar"
+            style="--text-color: blue"
+        >
+            <span slot="menu-text">Menü</span>
+            <ul>
+                {% include el/navbar.html ptag="nav" %}
+            </ul>
+        </nte-nav>
+    </nte-navbar-line>
+</nte-navbar>
+
+
+
+<nte-offcanvas id="navSidebar" data-group-name="nav1">
+    <nte-burger
+        slot="header"
+        data-nt-dismiss="offcanvas"
+        data-group-name="nav1"
+        onclick="this.open = false"
+    ></nte-burger>
+    <!--nte-nav class="nav-vertical"></nte-nav-->
+    <nte-nav slot="footer" class="nav-horizontal pos-stretch" style="width: 100%">
+    </nte-nav>
+</nte-offcanvas>
+
+
+{{ content }}
+

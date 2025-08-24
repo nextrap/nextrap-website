@@ -1,0 +1,103 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html class="loader" lang="{{ page.lang }}">
+<head>
+
+    <!-- Pasted in Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"
+    />
+    <!-- TODO: Remove and replace with useful, flexible font system -->
+
+    <base href="{% if site.baseurl == '' or site.baseurl == null %}/{% else %}{{ site.baseurl }}{% endif %}">
+
+    {% comment %}
+       Hier Google Site Verification einfügen:
+    {% endcomment %}
+    <meta name="google-site-verification" content="NN1A2XEV3PkleJTab6JgTUjJxadD8L_j1ZFHXf8D19Y" />
+
+    <link rel="canonical" href="{{ site.data.general.site_base_url }}{{ page.url }}"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0, shrink-to-fit=no">
+
+    {% comment %}
+       Der Titel: Wenn null dann default title für website general.yaml nehmen - bei Article original Titel und Titel anfügen. Default:
+       Website: Nur Titel aus general.yaml
+       Article: Titel + Website Titel
+    {% endcomment %}
+    <title>{% if page.title != null and page.title != "" %}{{ page.title | strip_html | escape }}{% else %}{{ site.data.general.title }}{%endif%}{% if page.type != 'website' %} - {{ site.data.general.title }}{%endif%}</title>
+    <meta name="description" content="{{ page.description | strip_newlines| strip_html  | escape | replace: "  ", " " | replace: "  ", " "  | replace: "  ", " " | lstrip}}">
+    <meta name="keywords" content="{{ page.keywords | strip_newlines | escape }}">
+    <meta name="last-modified" content="{{ site.time }}">
+    <meta name="robots" content="index,follow">
+
+
+    <meta property="og:url" content="{{ site.data.general.site_base_url }}{{ page.dir }}">
+    <meta property="og:type" content="{{ page.type | default: 'article' }}">
+    <meta property="og:site_name" content="{{ site.data.general.title }}">
+    <meta property="og:title" content="{% if page.type != 'website' %}{{ page.title | strip_html | escape }}} - {%endif%}{{ site.data.general.title }}">
+    <meta property="og:description" content="{{ page.description  | strip_html | strip_newlines | escape | replace: "  ", " " | replace: "  ", " "  | replace: "  ", " " | lstrip }}">
+
+    <meta property="og:image" itemprop="image" content="/assets/logo256.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="256">
+    <meta property="og:image:height" content="256">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | strip_html }}">
+    <meta name="twitter:description" content="{{ page.description  | strip_html | strip_newlines | escape }}">
+    <meta name="twitter:image" content="/assets/logo256.png">
+
+    {% if page.type != 'website' %}
+    <meta property="article:author" content="{{ site.data.general.title }}">
+    <meta property="article:tag" content="{{ page.keywords }}">
+    <meta property="article:section" content="{{ page.section }}">
+    {% endif %}
+
+    <link rel="dns-prefetch" href="https://cdn.leuffen.de">
+    <link rel="preconnect" href="https://cdn.leuffen.de">
+
+    <link rel="icon" href="/assets/logo256.png" />
+    <script>
+        window.lang = '{{ page.lang }}';
+        window.pid = '{{ page.pid }}'
+        window.layout = '{{ page.layout }}'
+        window.openhours = {{ site.data.openhours | jsonify }};
+        window.micx_subscription_id = '{{ site.data.general.subscription_id }}';
+        window.mapUrl = '{{ site.data.general.map_url }}';
+    </script>
+    <script>
+        const isNotSafari = () => {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.indexOf('safari') == -1 || userAgent.indexOf('chrome') > -1;
+        }
+        if( ! isNotSafari()) {
+            console.log("Safari Browser detected - loading polyfill...");
+            let node = document.createElement("script");
+            node.setAttribute("src", "/assets/dist/polyfill-custom-elements.js")
+            document.head.append(node)
+        }
+
+
+    </script>
+
+
+
+    {% comment %} ======== Liquid script for alternative language links ======= {% endcomment %}
+    {%- assign alt_lang_pages = site.pages | where: "pid", page.pid | where_exp: "item", "item.lang != page.lang" -%}
+    {%- for alt_page in alt_lang_pages -%}
+    <link rel="alternate" href="{{ alt_page.url | absolute_url }}" hreflang="{{ alt_page.lang }}" />
+    {% endfor %}
+
+    <link rel="stylesheet" href="/assets/dist/style.css?{{ site.time | date: '%Y%m%d%H%M%S' }}" type="text/css" media="all">
+
+</head>
+{{ content }}
+
+<script src="assets/dist/index.js?{{ site.time | date: '%Y%m%d%H%M%S' }}" type="module" defer async></script>
+</html>

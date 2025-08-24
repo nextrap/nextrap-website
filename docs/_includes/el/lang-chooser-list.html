@@ -1,0 +1,24 @@
+<div class="" style="" id="langchooser">
+    {% for _lang in site.data.languages %}
+        {% assign _page = site.pages | where: "pid", page.pid | where: "lang", _lang.lang | first %}
+    <a class="flag {% if _page.lang == page.lang %}active{% endif %} {% if _page == null %}disabled{% endif %}" href="{{ site.baseurl }}{{ _page.url }}">
+        <img class="border border-dark" src="https://cdn.leuffen.de/global/flags/4x3/{{ _lang.flag }}.svg" alt="{{ _lang.name }}" width="21" height="16" style="">
+    </a>
+    {% endfor %}
+</div>
+<style>
+    #langchooser .flag {
+        margin: 0 10px;
+        padding: 2px;
+    }
+    #langchooser a.disabled {
+        pointer-events: none;
+    }
+
+    #langchooser img {
+        opacity: 0.5;
+    }
+    #langchooser .active img {
+        opacity: 1;
+    }
+</style>

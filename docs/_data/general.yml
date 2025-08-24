@@ -1,0 +1,49 @@
+pagebuilder: https://pagebuilder.leuffen.de/e/falk-k43/default
+# Important: site_base_url - Always with https://www.! - No trailing slash! - Keep UNKNOWN_DOMAIN.XXX unless domain was explicitly stated!
+site_base_url: "https://www.nextrap.com" ## Change to the domain of the website (leave UNKNOWN_DOMAIN.XXX if not known)
+subscription_id: muster-k43
+
+# Titel der Website
+title: Praxis Dr. Heike Muster - hausärztlich internistische Praxis in Musterstadt
+
+
+# Name der Praxis
+name:  Nextrap
+name2: ~
+
+
+# Kurzbeschreibung
+desc: Fachärztin für Innere Medizin
+
+fachrichtung: Web Components
+logoalt: nextrap
+street: Musterstraße. 13
+zip: 72250
+city: Musterstadt
+
+
+
+termin_url: "/online-termin" ## Auf /online-termin stehen lassen, wenn nichts anderes angegeben wurde.
+map_url: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d286.188825789242!2d8.449496546318292!3d48.47202968557242!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479735c1aeacb92d%3A0x9eeaecce18dcfa29!2sOrtsstra%C3%9Fe%2013%2C%2072250%20Freudenstadt!5e0!3m2!1sde!2sde!4v1695118965248!5m2!1sde!2sde"
+map_link: "https://www.google.com/maps/place/Ortsstr.+13+%2C+72250+Freudenstadt-Wittlensweiler/@,"
+google_rating_link: ""
+
+datenschutzbeauftragter: |
+bildnachweise: |
+    <br>Bilder von <a href="https://stock.adobe.com">Adobe Stock</a>
+# Telefonnummer wie sie angezeigt wird
+phone1_text: "(0 74 41) 81 605"
+# Telefonnummer mit länderprefix für tel: links (ohne space)
+phone1: "+49744181605"
+fax1_text: "(07441) 51 722"
+
+email: mail@UNKNOWN_DOMAIN.XXX
+domain: "www.UNKNOWN_DOMAIN.XXX"  ## Change to the domain of the website (leave UNKNOWN_DOMAIN.XXX if not known) - Dont add http:// or https:// - keep www.
+
+
+
+tools:
+  googlemaps: true
+  jameda: false
+  recaptcha: false
+
