@@ -28,7 +28,11 @@ defaults:
       path: "_posts"
     values:
       layout: "post"
-
+  - scope:
+      path: "examples"        # gilt global
+    values:
+      render_with_liquid: false
+      layout: null
 collections:
     elements:
         output: false
