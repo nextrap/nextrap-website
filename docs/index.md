@@ -17,7 +17,7 @@ ptags:
 published: true
 seoScore: 8
 short_title: Home
-title: ~
+title: Hello title
 type: website
 ---
 
