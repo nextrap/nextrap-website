@@ -29,10 +29,10 @@ defaults:
     values:
       layout: "post"
   - scope:
-      path: "examples"        # gilt global
+      path: "assets"        # gilt global
     values:
       render_with_liquid: false
-      layout: null
+      layout: ~
 collections:
     elements:
         output: false
