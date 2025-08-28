@@ -36,7 +36,7 @@ layout: 2_script
             class="nav-horizontal"
             mode="master"
             data-group-name="nav1"
-            breakpoint="600px"
+            breakpoint="800px"
             transfer-to="#navSidebar"
             style="--text-color: blue"
         >
@@ -50,6 +50,17 @@ layout: 2_script
 
 
 
+<nte-offcanvas id="navSidebar" data-group-name="nav1">
+    <nte-burger
+        slot="header"
+        data-nt-dismiss="offcanvas"
+        data-group-name="nav1"
+        onclick="this.open = false"
+    ></nte-burger>
+    <!--nte-nav class="nav-vertical"></nte-nav-->
+    <nte-nav class="nav-vertical pos-stretch" style="width: 100%">
+    </nte-nav>
+</nte-offcanvas>
 
 
 {{ content }}
